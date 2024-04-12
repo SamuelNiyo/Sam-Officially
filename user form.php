@@ -1,38 +1,87 @@
 <?php
-session_start();
+$servername = "localhost"; 
+$username = "sam"; 
+$password = "222008677"; 
+$dbname = "revenuesystem";
 
-// Connect to database (replace dbname, username, password with actual credentials)
-require_once "databaseconnection.php";
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email']; // Corrected variable name
-    $address = $_POST['address'];
 
-    // Use prepared statements to prevent SQL injection
-    $sql = "SELECT * FROM user WHERE email=?"; // Corrected column name
-    $fdamp = $connection->prepare($sql);
-    $fdamp->bind_param("s", $email); // Corrected parameter type
-    $fdamp->execute();
-    $result = $fdamp->get_result();
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    if ($result->num_rows == 1) {
-        $row = $result->fetch_assoc();
-        if (address_verify($address, $row['address'])) {
-            $_SESSION['user_id'] = $row['user_id']; // Set the fue_suppler_id session variable
-            header("Location:landing.php");
-            exit();
-        } else {
-            echo "Invalid email or phone.";
+
+$sql = "SELECT * FROM users";
+
+
+$result = $conn->query($sql);
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Data in Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Data of User Table</h2>
+
+
+<table>
+    <tr>
+    <th>ID</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Telephone</th>
+        <th>Password</th>
+        <th>Credation_Date</th>
+        <th>activation_Code</th>
+        <th>Is_activated</th>
+    </tr>
+    <?php
+    // Step 4: Fetch the data from the query result
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>".$row["id"]."</td>";
+            echo "<td>".$row["firstname"]."</td>";
+            echo "<td>".$row["lastname"]."</td>";
+            echo "<td>".$row["username"]."</td>";
+            echo "<td>".$row["email"]."</td>";
+            echo "<td>".$row["telephone"]."</td>";
+             echo "<td>".$row["password"]."</td>";
+             echo "<td>".$row["creationdate"]."</td>";
+             echo "<td>".$row["activation_code"]."</td>";
+             echo "<td>".$row["is_activated"]."</td>";
+            echo "</tr>";
         }
     } else {
-        echo "User not found.";
+        echo "0 results";
     }
-}
+    ?>
+</table>
 
-$connection->close();
-
-function address_verify($address, $storeaddress) {
-    
-    return $address === $storeaddress;
-}
+<?php
+// Close the connection
+$conn->close();
 ?>
+
+</body>
+</html>

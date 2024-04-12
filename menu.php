@@ -10,13 +10,13 @@
 		<nav>
 			<ul>
 			<!-- Navigation links -->
-				<li><a href="index.html">Home</a></li>
+				<li><a href="home.html">Home</a></li>
 				<li><a href="about.php">About Us</a></li>
 				<li><a href="services.php">Our Services</a></li>
 				<li><a href="contact.php">Contact Us</a></li>
 				<li class="dropdown"><!-- Dropdown menu --> <a href="#">Forms</a>
 				 <div class="dropdown-content">
-				    <a href="userform.html">User Form</a>
+				    <a href="user form.php">User Form</a>
 				    <a href="admin form.php">Admin Form</a>
 				    <a href="manager form.php">Manager Form</a>
 				    <a href="agent form.php">Agent Form</a>
@@ -27,7 +27,7 @@
 			  </li>
 			  	<li class="dropdown"><!-- Dropdown menu --> <a href="#">Tables</a>
 				 <div class="dropdown-content">
-				    <a href="user form.php">Login</a>
+				    <a href="userform.php">Login</a>
 				    <a href="admin form.php">Register</a>
 				    <a href="manager form.php">Manager Form</a>
 				    <a href="agent form.php">Agent Form</a>
@@ -37,8 +37,8 @@
 			  </li>
 				<li class="dropdown"><!-- Dropdown menu --> <a href="#">Setting</a>
 				 <div class="dropdown-content">
-				    <a href="login.html">Login</a>
-				    <a href="register.html">Register</a>	
+				    <a href="index.php">Login</a>
+				    <a href="logout.php">Logout</a>	
 				  </div>
 			  </li>
 			</ul>

@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Form</title>
 </head>
+
 <body>
     <h1><center>User Form</center></h1>
     <center>
-         <form action="insert_user.php" method="POST">
+        <form action="user form.php" method="POST">
             <label for="id">ID</label>
             <input type="number" name="id" id="id"><br><br>
 
@@ -36,9 +38,13 @@
             <label for="agent_id">Agent Id</label>
             <input type="number" name="agent_id" id="agent_id"><br><br>
 
-            <input type="submit" name="sbt" value="SUBMIT">
-            <input type="reset" name="cnl" value="CANCEL"><br><br>
+            <input type="submit" value="Register">
+        </form>
+        <br>
+        <form action="home.html">
+            <input type="submit" value="Back to Home">
         </form>
     </center>
 </body>
+
 </html>
